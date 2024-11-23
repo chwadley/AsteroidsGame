@@ -52,7 +52,7 @@ void draw() {
 }
 
 void keyPressed() {
-  System.out.println(keyCode);
+  //System.out.println(keyCode);
   if (keyCode<keys.length) {
     keys[keyCode]=true;
   }
