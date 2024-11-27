@@ -12,7 +12,7 @@ class ship extends Floater {
     myYspeed=0;
     myPointDirection=0;
     dashing=false;
-    corners=16;
+    corners=32;
     xCorners = new int[]{-4,-5,-5,-4,-3,-1, 0, 2, 3, 7, 8, 6, 2, -6,-6,-7,-7,-6,-6,2,6,8,7,3,2,0,-1,-3,-4,-5,-5,-4,-6,-6};
     yCorners = new int[]{-7,-8,-9,-8,-9,-7,-8,-6,-7,-3,-4,-6,-8,-10,-2,-2, 2, 2,10,8,6,4,3,7,6,8, 7, 9, 8, 9, 8, 7, 1,-1};
   }
