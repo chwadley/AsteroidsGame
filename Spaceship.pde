@@ -3,6 +3,7 @@ class ship extends Floater {
   private boolean dashing;
   private int dashTimer;
   private float maxSpeed;
+  public static final float power = 1;
   
   public ship(float _x, float _y) {
     myColor=255;
@@ -18,17 +19,42 @@ class ship extends Floater {
   }
   
   public void moveStepEachFrame() {
-    if (keys[87]) {
-      accelerate(0.5);
-    }
-    if (keys[83]) {
-      accelerate(-0.5);
-    }
-    if (keys[65]) {
-      turn(-5);
-    }
-    if (keys[68]) {
-      turn(5);
+    if (controls) {
+      if (keys[87]) {
+        myYspeed-=power;
+      }
+      if (keys[83]) {
+        myYspeed+=power;
+      }
+      if (keys[65]) {
+        myXspeed-=power;
+      }
+      if (keys[68]) {
+        myXspeed+=power;
+      }
+      if (myXspeed!=0) {
+        myPointDirection = degrees(atan((float)(myYspeed/myXspeed)));
+      } else if (myYspeed>0) {
+        myPointDirection = 90;
+      } else if (myYspeed<0) {
+        myPointDirection = 270;
+      }
+      if (myXspeed<0) {
+        myPointDirection += 180;
+      }
+    } else {
+      if (keys[87]) {
+        accelerate(0.5);
+      }
+      if (keys[83]) {
+        accelerate(-0.5);
+      }
+      if (keys[65]) {
+        turn(-5);
+      }
+      if (keys[68]) {
+        turn(5);
+      }
     }
     dashTimer-=dashing?1:0;
     dashing=dashing&&dashTimer>0;
@@ -84,6 +110,6 @@ class ship extends Floater {
     myCenterY=_random(0,height);
     myXspeed=0;
     myYspeed=0;
-    myPointDirection=_random(0,2*PI);
+    myPointDirection=_random(0,360);
   }
 }
