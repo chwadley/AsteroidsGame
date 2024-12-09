@@ -90,6 +90,7 @@ void draw() {
           }
           count++;
           particles.remove(j);
+          j--;
           break;
         }
       }
